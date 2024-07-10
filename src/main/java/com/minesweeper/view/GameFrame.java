@@ -4,38 +4,36 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.SwingUtilities;
 
 import com.minesweeper.controller.GameController;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
 public class GameFrame extends JFrame {
-    private JLabel minesRemainingLabel;
+    private JLabel flagsRemainingLabel;
     private GamePanel gridPanel;
     private GameController gameController;
 
     public GameFrame(GameController gameController) {
         this.gameController = gameController;
-        initUI();
+        initUI(this.gameController.getRows(), this.gameController.getColumns());
     }
 
-    private void initUI() {
+    private void initUI(int rows, int columns) {
         setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(800, 800);
         setLocationRelativeTo(null); // Center the window
 
         JPanel topPanel = new JPanel(new BorderLayout());
-
-        minesRemainingLabel = new JLabel("10"); // Example number
-        topPanel.add(minesRemainingLabel, BorderLayout.WEST);
+        // this.setFlagsRemainingLabel();
+        flagsRemainingLabel = new JLabel("Flags remaining: " + this.gameController.getFlagsRemaining()); // Example number
+        topPanel.add(flagsRemainingLabel, BorderLayout.WEST);
 
         JButton newGameButton = new JButton("New Game");
         newGameButton.addActionListener(e -> {
-            gameController.startNewGame();
+            gameController.startNewGame(gameController.getGameMode());
             this.dispose(); // Close the current game 
         });
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -45,11 +43,12 @@ public class GameFrame extends JFrame {
 
         add(topPanel, BorderLayout.NORTH);
 
-        gridPanel = new GamePanel(16, 16); // Assuming a 16x16 grid
+        gridPanel = new GamePanel(rows, columns, this.gameController);
         add(gridPanel, BorderLayout.CENTER);
     }
 
-    public void setMinesRemaining(int mines) {
-        minesRemainingLabel.setText("Mines remaining: " + mines);
+    public void updateFlagsRemaining(int flagsRemaining) {
+        this.flagsRemainingLabel.setText("Flags remaining: " + gameController.getFlagsRemaining());
     }
 }
+
