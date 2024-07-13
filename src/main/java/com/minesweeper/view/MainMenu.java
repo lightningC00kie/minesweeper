@@ -33,11 +33,13 @@ public class MainMenu extends JFrame {
         });
         
         mediumModeButton.addActionListener(e -> {
+            gameController = new GameController(GameMode.MEDIUM); // Create a new game controller with the selected game mode (easy, medium, or hard
             gameController.startNewGame(GameMode.MEDIUM);
             this.dispose(); // Close the main menu
         });
         
         hardModeButton.addActionListener(e -> {
+            gameController = new GameController(GameMode.HARD); // Create a new game controller with the selected game mode (easy, medium, or hard
             gameController.startNewGame(GameMode.HARD);
             this.dispose(); // Close the main menu
         });

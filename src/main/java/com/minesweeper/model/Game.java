@@ -1,5 +1,12 @@
 package com.minesweeper.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+
 public class Game {
     private int flagsRemaining = 10;
     private int rows;
@@ -7,22 +14,28 @@ public class Game {
     private Cell[][] grid;
     private boolean gameOver = false;
     private int numMines;
-
+    private List<Cell> newlyRevealedCells = new ArrayList<>();
     public Game(GameMode mode) {
         switch (mode) {
             case EASY:
-                initGame(9, 9);
+                this.rows = 9;
+                columns = 9;
                 numMines = 10;
+                initGame(rows, columns);
                 placeMines(numMines);
                 break;
             case MEDIUM:
-                initGame(16, 16);
+                rows = 16;
+                columns = 16;
                 numMines = 40;
+                initGame(rows, columns);
                 placeMines(numMines);
                 break;
             case HARD:
-                initGame(16, 30);
+                rows = 16;
+                columns = 30;
                 numMines = 99;
+                initGame(rows, columns);
                 placeMines(numMines);
                 break;
         }
@@ -75,12 +88,45 @@ public class Game {
         }
     }
     
-    public void revealCell(int row, int col) {
-        if (grid[row][col].isMine()) {
+    public void revealCell(Cell cell) {
+        if (cell.isMine()) {
             gameOver = true;
             return;
         }
-        grid[row][col].setRevealed();
+        revealAll(cell);
+    }
+
+    public void revealAll(Cell cell) {
+        newlyRevealedCells = new ArrayList<>();
+        Queue<Cell> queue = new LinkedList<>();
+
+        queue.add(cell);
+        // newlyRevealedCells.add(cell);
+        while (!queue.isEmpty()) {
+            Cell current = queue.poll();
+            current.setRevealed();
+            newlyRevealedCells.add(current);
+            if (current.getCount() == 0) {
+                List<Cell> neighbors = getNeighbors(current);
+                for (Cell neighbor : neighbors) {
+                    if (!neighbor.isRevealed() && neighbor.getCount() == 0){
+                        queue.add(neighbor);
+                    }
+                }
+            }
+        }
+    }
+
+    public List<Cell> getNeighbors(Cell cell) {
+        List<Cell> neighbors = new ArrayList<>();
+        for (int r = cell.getRow() - 1; r <= cell.getRow() + 1; r++) {
+            for (int c = cell.getColumn() - 1; c <= cell.getColumn() + 1; c++) {
+                if (r >= 0 && r < rows && c >= 0 && c < columns && !grid[r][c].isRevealed()) {
+                    neighbors.add(grid[r][c]);
+                }
+            }
+        }
+        return neighbors;
     }
 
     public int getAdjacentMines(int row, int col) {
@@ -97,5 +143,24 @@ public class Game {
 
     public boolean GameOver() {
         return gameOver;
+    }
+
+    public Cell getCell(int row, int col) {
+        return grid[row][col];
+    }
+
+    public Cell[][] getGrid() {
+        return grid;
+    }
+
+    public List<Cell> getRevealedCells() {
+        // List<Cell> revealedCells = new ArrayList<>();
+        // Arrays.stream(grid) // Stream the outer array
+        //     .flatMap(Arrays::stream) // Flatten the inner arrays into a single stream
+        //     .filter(cell -> cell.isRevealed()) // Filter cells that are revealed
+        //     .forEach(revealedCells::add); // Collect the results
+        // System.out.println(revealedCells.size());
+        // return revealedCells;
+        return newlyRevealedCells;
     }
 }

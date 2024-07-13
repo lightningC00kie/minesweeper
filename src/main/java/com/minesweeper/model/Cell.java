@@ -4,6 +4,8 @@ public class Cell {
     private boolean isMine = false;
     private int adjacentMines;
     private boolean isRevealed = false;
+    private int row;
+    private int column;
 
     public boolean isMine() {
         return this.isMine;
@@ -26,6 +28,19 @@ public class Cell {
     public void setRevealed() {
         // Set the cell to be revealed
         this.isRevealed = true;
+    }
+
+    public boolean isRevealed() {
+        // Check if the cell is revealed
+        return this.isRevealed;
+    }
+
+    public int getRow() {
+        return this.row;
+    }
+
+    public int getColumn() {
+        return this.column;
     }
     
 }

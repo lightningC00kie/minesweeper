@@ -50,5 +50,9 @@ public class GameFrame extends JFrame {
     public void updateFlagsRemaining(int flagsRemaining) {
         this.flagsRemainingLabel.setText("Flags remaining: " + gameController.getFlagsRemaining());
     }
+
+    public CellButton getCellButton(int row, int column) {
+        return gridPanel.getCellButton(row, column);
+    }
 }
 

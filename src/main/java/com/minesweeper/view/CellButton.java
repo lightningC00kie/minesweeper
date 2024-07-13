@@ -43,10 +43,8 @@ public class CellButton extends JButton {
 
     public void reveal(int adjacentMines) {
         // Set the background color to white
+        setBackground(Color.WHITE);
         setText(String.valueOf(adjacentMines));
-        // Set the text of the button to the number of mines
-        // Example: setText("3");
-        // setText("3");
     }
 
     private void onLeftClick() {

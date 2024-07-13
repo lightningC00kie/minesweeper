@@ -2,7 +2,6 @@ package com.minesweeper;
 
 import javax.swing.SwingUtilities;
 
-import com.minesweeper.controller.GameController;
 import com.minesweeper.view.MainMenu;
 
 public class App {

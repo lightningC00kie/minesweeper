@@ -24,5 +24,15 @@ public class GamePanel extends JPanel {
         }
     }
 
+
+    public CellButton getCellButton(int row, int column) {
+        for (int i = 0; i < getComponentCount(); i++) {
+            CellButton cellButton = (CellButton) getComponent(i);
+            if (cellButton.getRow() == row && cellButton.getColumn() == column) {
+                return cellButton;
+            }
+        }
+        return null;
+    }
     // Additional methods to handle game logic and UI updates
 }
