@@ -25,6 +25,11 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.choco-solver</groupId>
+      <artifactId>choco-solver</artifactId>
+      <version>4.10.14</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -69,6 +74,20 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.0</version> <!-- Use the latest version available -->
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <classpathPrefix>lib/</classpathPrefix>
+                        <mainClass>com.minesweeper.App</mainClass> 
+                    </manifest>
+                </archive>
+            </configuration>
+          </plugin>
       </plugins>
     </pluginManagement>
   </build>

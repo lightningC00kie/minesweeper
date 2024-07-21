@@ -2,6 +2,7 @@ package com.minesweeper.controller;
 
 import java.util.List;
 
+import com.minesweeper.Player.Player;
 import com.minesweeper.model.Cell;
 import com.minesweeper.model.Game;
 import com.minesweeper.model.GameMode;
@@ -28,8 +29,6 @@ public class GameController {
     }
 
     public int getRows() {
-        System.out.println("-------------------------------: ");
-
         return this.game.getRows();
     }
 
@@ -47,11 +46,13 @@ public class GameController {
         if (cellButton.isFlagged()) {
             flagsRemaining++;
             cellButton.unflag();
+            cell.flag();
         }
         else {
             if (flagsRemaining > 0) {
                 cellButton.flag();
                 flagsRemaining--;
+                cell.unflag();
             }
         }
         gameFrame.updateFlagsRemaining(flagsRemaining);
@@ -59,44 +60,39 @@ public class GameController {
 
     public void handleLeftClick(CellButton cellButton) {
         // Reveal the cell at the given row and column
-        System.out.println("Left Click at [" + cellButton.getRow() + ", " + cellButton.getColumn() + "]");
         Cell cell = game.getCell(cellButton.getRow(), cellButton.getColumn());
         if (cellButton.isFlagged()) {
             return;
         }
 
         game.revealCell(cell);
-        System.out.println(cell.isRevealed());
         if (game.GameOver()) {
             // Game over
+            System.out.println("Game over!");
             this.gameFrame.dispose();
-            System.out.println("Game Over");
         }
         else {
-            // Continue playing
-            System.out.println("Continue playing");
-            List<Cell> revealedCells = game.getRevealedCells();
-            System.out.println(revealedCells.size());
-            for (Cell c : revealedCells) {
-                System.out.println("Revealed cell at [" + c.getRow() + ", " + c.getColumn() + "]");
-                CellButton curCellButton = gameFrame.getCellButton(c.getRow(), c.getColumn());
-                curCellButton.reveal(game.getAdjacentMines(curCellButton.getRow(), curCellButton.getColumn()));
-                // System.out.println("Revealed cell at [" + c.getRow() + ", " + c.getColumn() + "]");
-            }
-            // Assuming game.grid is a List<Cell>
-            
+            List<Cell> newlyRevealedCells = game.getNewlyRevealedCells();
+            for (Cell curCell : newlyRevealedCells) {
+                    if (curCell.isRevealed()) {
+                        CellButton curCellButton = gameFrame.getCellButton(curCell.getRow(), curCell.getColumn());
+                        curCellButton.reveal(curCell.getCount());
+                    }
+                }   
         }
 
+        // if (game.isWon()) {
+        //     System.out.println("Game won!");
+        //     this.gameFrame.dispose();
+        // }
     }
 
     public void flagCell(CellButton cellButton) {
-        // Flag the cell at the given row and column
         if (cellButton.isFlagged()) {
             flagsRemaining++;
             cellButton.unflag();
         }
         else {
-            // flagsRemaining = flagsRemaining > 0 ? flagsRemaining-- : this.flagsRemaining;
             if (flagsRemaining > 0) {
                 flagsRemaining--;
                 cellButton.flag();
@@ -109,10 +105,28 @@ public class GameController {
     }
 
     public void startNewGame(GameMode gameMode) {
-        // GameFrame gameFrame = new GameFrame(this);
-        // gameFrame.setVisible(true);
         new GameController(gameMode);
         this.gameFrame.dispose();
+    }
+
+    public void solveGame() {
+        Player p1 = new Player(game);
+        p1.play();
+    }
+
+    public void revealAllCells() {
+        for (int i = 0; i < game.getRows(); i++) {
+            for (int j = 0; j < game.getColumns(); j++) {
+                Cell cell = game.getCell(i, j);
+                CellButton cellButton = gameFrame.getCellButton(i, j);
+                if (cell.isMine()) {
+                    cellButton.revealMine();
+                }
+                else {
+                    cellButton.reveal(cell.getCount());
+                }
+            }
+        }
     }
 
 }

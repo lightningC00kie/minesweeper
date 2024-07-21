@@ -23,12 +23,20 @@ public class GameFrame extends JFrame {
     private void initUI(int rows, int columns) {
         setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 800);
+
+        final int cellWidth = 30; // Width of each cell in the grid
+        final int cellHeight = 30; // Height of each cell in the grid
+        final int windowWidthPadding = 500; // Extra width for window decorations and padding
+        final int windowHeightPadding = 500; // Extra height for window decorations, padding, and top panel
+        
+        int windowWidth = columns * cellWidth + windowWidthPadding;
+        int windowHeight = rows * cellHeight + windowHeightPadding;
+        setSize(windowWidth, windowHeight);
+
         setLocationRelativeTo(null); // Center the window
 
         JPanel topPanel = new JPanel(new BorderLayout());
-        // this.setFlagsRemainingLabel();
-        flagsRemainingLabel = new JLabel("Flags remaining: " + this.gameController.getFlagsRemaining()); // Example number
+        flagsRemainingLabel = new JLabel("Flags remaining: " + this.gameController.getFlagsRemaining());
         topPanel.add(flagsRemainingLabel, BorderLayout.WEST);
 
         JButton newGameButton = new JButton("New Game");
@@ -36,9 +44,22 @@ public class GameFrame extends JFrame {
             gameController.startNewGame(gameController.getGameMode());
             this.dispose(); // Close the current game 
         });
+
+        JButton solveButton = new JButton("Solve");
+        solveButton.addActionListener(e -> {
+            gameController.solveGame();
+        });
+
+        JButton revealAllButton = new JButton("Reveal All");
+        revealAllButton.addActionListener(e -> {
+            gameController.revealAllCells();
+        });
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(newGameButton);
+        buttonPanel.add(solveButton);
+        buttonPanel.add(revealAllButton);
         topPanel.add(buttonPanel, BorderLayout.CENTER);
+
 
 
         add(topPanel, BorderLayout.NORTH);

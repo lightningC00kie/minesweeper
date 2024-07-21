@@ -8,7 +8,6 @@ import java.util.Queue;
 
 
 public class Game {
-    private int flagsRemaining = 10;
     private int rows;
     private int columns;
     private Cell[][] grid;
@@ -53,7 +52,8 @@ public class Game {
         grid = new Cell[rows][columns];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                grid[i][j] = new Cell();
+                Cell cell = new Cell(i, j);
+                grid[i][j] = cell;
             }
         }
     }
@@ -99,33 +99,45 @@ public class Game {
     public void revealAll(Cell cell) {
         newlyRevealedCells = new ArrayList<>();
         Queue<Cell> queue = new LinkedList<>();
-
+        List<Cell> neighbors;
         queue.add(cell);
-        // newlyRevealedCells.add(cell);
+
         while (!queue.isEmpty()) {
             Cell current = queue.poll();
             current.setRevealed();
             newlyRevealedCells.add(current);
             if (current.getCount() == 0) {
-                List<Cell> neighbors = getNeighbors(current);
+                neighbors = getNeighbors(current);
                 for (Cell neighbor : neighbors) {
-                    if (!neighbor.isRevealed() && neighbor.getCount() == 0){
+                    if (!neighbor.isRevealed()){
                         queue.add(neighbor);
                     }
                 }
+                
             }
         }
     }
 
     public List<Cell> getNeighbors(Cell cell) {
         List<Cell> neighbors = new ArrayList<>();
-        for (int r = cell.getRow() - 1; r <= cell.getRow() + 1; r++) {
-            for (int c = cell.getColumn() - 1; c <= cell.getColumn() + 1; c++) {
-                if (r >= 0 && r < rows && c >= 0 && c < columns && !grid[r][c].isRevealed()) {
-                    neighbors.add(grid[r][c]);
+        int[] directions = {-1, 0, 1}; 
+    
+        for (int dx : directions) {
+            for (int dy : directions) {
+                if (dx == 0 && dy == 0) {
+                    // Skip the cell itself
+                    continue;
+                }
+                System.out.println(cell.getRow() + " " + cell.getColumn());
+                int newX = cell.getRow() + dx;
+                int newY = cell.getColumn() + dy;
+                // Check boundaries
+                if (newX >= 0 && newX < rows && newY >= 0 && newY < columns) {
+                    neighbors.add(grid[newX][newY]);
                 }
             }
         }
+        System.out.println("neighbors: " + neighbors.size());
         return neighbors;
     }
 
@@ -153,14 +165,19 @@ public class Game {
         return grid;
     }
 
-    public List<Cell> getRevealedCells() {
-        // List<Cell> revealedCells = new ArrayList<>();
-        // Arrays.stream(grid) // Stream the outer array
-        //     .flatMap(Arrays::stream) // Flatten the inner arrays into a single stream
-        //     .filter(cell -> cell.isRevealed()) // Filter cells that are revealed
-        //     .forEach(revealedCells::add); // Collect the results
-        // System.out.println(revealedCells.size());
-        // return revealedCells;
+    public List<Cell> getNewlyRevealedCells() {
         return newlyRevealedCells;
+    }
+
+    public boolean isWon() {
+        int numRevealed = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (grid[i][j].isRevealed()) {
+                    numRevealed++;
+                }
+            }
+        }
+        return numRevealed == rows * columns - numMines;
     }
 }

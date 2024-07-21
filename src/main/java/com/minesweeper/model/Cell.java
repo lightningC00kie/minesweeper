@@ -6,6 +6,12 @@ public class Cell {
     private boolean isRevealed = false;
     private int row;
     private int column;
+    private boolean isFlagged = false;
+
+    public Cell(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
 
     public boolean isMine() {
         return this.isMine;
@@ -23,6 +29,10 @@ public class Cell {
     public int getCount() {
         // Get the number of mines surrounding this cell
         return this.adjacentMines;
+    }
+
+    public boolean isFlagged() {
+        return this.isFlagged;
     }
 
     public void setRevealed() {
@@ -43,4 +53,11 @@ public class Cell {
         return this.column;
     }
     
+    public void flag() {
+        this.isFlagged = true;
+    }
+
+    public void unflag() {
+        this.isFlagged = false;
+    }
 }

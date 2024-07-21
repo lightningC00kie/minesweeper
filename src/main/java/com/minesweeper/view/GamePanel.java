@@ -34,5 +34,4 @@ public class GamePanel extends JPanel {
         }
         return null;
     }
-    // Additional methods to handle game logic and UI updates
 }

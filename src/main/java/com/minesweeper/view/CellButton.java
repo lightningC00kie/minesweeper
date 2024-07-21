@@ -23,43 +23,35 @@ public class CellButton extends JButton {
         this.row = row;
         this.column = column;
         this.gameController = gameController;
-        // System.out.println(this.gameController == null);
-        // this.isFlagged = false;
 
         setBackground(Color.LIGHT_GRAY);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
-                    // Left click
                     onLeftClick();
                 } else if (e.getButton() == MouseEvent.BUTTON3) {
-                    // Right click
                     onRightClick();
                 }
             }
         });
     }
 
+    public void revealMine() {
+        setBackground(Color.RED);
+    }
+
     public void reveal(int adjacentMines) {
-        // Set the background color to white
         setBackground(Color.WHITE);
         setText(String.valueOf(adjacentMines));
     }
 
     private void onLeftClick() {
-        // Call the controller function for a left click
-        // Example: GameController.handleLeftClick(row, column);
         this.gameController.handleLeftClick(this);
     }
     
     private void onRightClick() {
-        // Call the controller function for a right click
-        // this.gameController.handleLeftClick(row, column);
-        // System.out.println(this.gameController == null);
         this.gameController.handleRightClick(this);
-        // setBackground(Color.RED);
-        // Example: GameController.handleRightClick(row, column);
     }
 
     public void flag() {

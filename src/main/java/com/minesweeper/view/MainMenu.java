@@ -27,26 +27,22 @@ public class MainMenu extends JFrame {
         
 
         easyModeButton.addActionListener(e -> {
-            gameController = new GameController(GameMode.EASY); // Create a new game controller with the selected game mode (easy, medium, or hard
+            gameController = new GameController(GameMode.EASY); 
             gameController.startNewGame(GameMode.EASY);
-            this.dispose(); // Close the main menu
+            this.dispose(); 
         });
         
         mediumModeButton.addActionListener(e -> {
-            gameController = new GameController(GameMode.MEDIUM); // Create a new game controller with the selected game mode (easy, medium, or hard
+            gameController = new GameController(GameMode.MEDIUM); 
             gameController.startNewGame(GameMode.MEDIUM);
-            this.dispose(); // Close the main menu
+            this.dispose(); 
         });
         
         hardModeButton.addActionListener(e -> {
-            gameController = new GameController(GameMode.HARD); // Create a new game controller with the selected game mode (easy, medium, or hard
+            gameController = new GameController(GameMode.HARD); 
             gameController.startNewGame(GameMode.HARD);
-            this.dispose(); // Close the main menu
+            this.dispose(); 
         });
-        // newGameButton.addActionListener(e -> {
-        //     gameController.startNewGame();
-        //     this.dispose(); // Close the main menu
-        // });
 
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -55,6 +51,5 @@ public class MainMenu extends JFrame {
         add(easyModeButton, gbc);
         add(mediumModeButton, gbc);
         add(hardModeButton, gbc);
-        // add(newGameButton, gbc);
     }
 }
