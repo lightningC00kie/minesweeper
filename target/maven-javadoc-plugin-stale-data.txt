@@ -3,70 +3,69 @@
 @options
 @packages
 -classpath
-'/home/bes/.m2/repository/org/choco-solver/choco-solver/4.10.14/choco-solver-4.10.14.jar:/home/bes/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/home/bes/.m2/repository/org/jgrapht/jgrapht-core/1.4.0/jgrapht-core-1.4.0.jar:/home/bes/.m2/repository/org/jheaps/jheaps/0.11/jheaps-0.11.jar:/home/bes/.m2/repository/org/knowm/xchart/xchart/3.8.3/xchart-3.8.3.jar:/home/bes/.m2/repository/de/erichseifert/vectorgraphics2d/VectorGraphics2D/0.13/VectorGraphics2D-0.13.jar:/home/bes/.m2/repository/de/rototor/pdfbox/graphics2d/0.41/graphics2d-0.41.jar:/home/bes/.m2/repository/org/apache/pdfbox/pdfbox/2.0.26/pdfbox-2.0.26.jar:/home/bes/.m2/repository/org/apache/pdfbox/fontbox/2.0.26/fontbox-2.0.26.jar:/home/bes/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/home/bes/.m2/repository/com/madgag/animated-gif-lib/1.4/animated-gif-lib-1.4.jar:/home/bes/.m2/repository/org/ehcache/sizeof/0.4.3/sizeof-0.4.3.jar:/home/bes/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/home/bes/.m2/repository/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar'
+'C:/Users/karee/.m2/repository/org/choco-solver/choco-solver/4.10.14/choco-solver-4.10.14.jar;C:/Users/karee/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar;C:/Users/karee/.m2/repository/org/jgrapht/jgrapht-core/1.4.0/jgrapht-core-1.4.0.jar;C:/Users/karee/.m2/repository/org/jheaps/jheaps/0.11/jheaps-0.11.jar;C:/Users/karee/.m2/repository/org/knowm/xchart/xchart/3.8.3/xchart-3.8.3.jar;C:/Users/karee/.m2/repository/de/erichseifert/vectorgraphics2d/VectorGraphics2D/0.13/VectorGraphics2D-0.13.jar;C:/Users/karee/.m2/repository/de/rototor/pdfbox/graphics2d/0.41/graphics2d-0.41.jar;C:/Users/karee/.m2/repository/org/apache/pdfbox/pdfbox/2.0.26/pdfbox-2.0.26.jar;C:/Users/karee/.m2/repository/org/apache/pdfbox/fontbox/2.0.26/fontbox-2.0.26.jar;C:/Users/karee/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar;C:/Users/karee/.m2/repository/com/madgag/animated-gif-lib/1.4/animated-gif-lib-1.4.jar;C:/Users/karee/.m2/repository/org/ehcache/sizeof/0.4.3/sizeof-0.4.3.jar;C:/Users/karee/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar;C:/Users/karee/.m2/repository/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar'
 -encoding
 'UTF-8'
 -protected
 -source
 '11'
 -sourcepath
-'/home/bes/Documents/sem6/minesweeper/minesweeper/src/main/java'
+'C:/Users/karee/Documents/GitHub/minesweeper/src/main/java'
 -author
 -bottom
 'Copyright &#169; 2024. All rights reserved.'
 -charset
 'UTF-8'
 -d
-'/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs'
+'C:/Users/karee/Documents/GitHub/minesweeper/target/reports/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
 'minesweeper 1.0-SNAPSHOT API'
 -linkoffline
-'https://docs.oracle.com/en/java/javase/11/docs/api' '/home/bes/Documents/sem6/minesweeper/minesweeper/target/javadoc-bundle-options'
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/karee/Documents/GitHub/minesweeper/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
 'minesweeper 1.0-SNAPSHOT API'
-com.minesweeper.view
-com.minesweeper.model
-com.minesweeper.Player
 com.minesweeper
 com.minesweeper.controller
-/home/bes/.m2/repository/org/choco-solver/choco-solver/4.10.14/choco-solver-4.10.14.jar = 1698942195000
-/home/bes/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar = 1323011097000
-/home/bes/.m2/repository/org/jgrapht/jgrapht-core/1.4.0/jgrapht-core-1.4.0.jar = 1582311628000
-/home/bes/.m2/repository/org/jheaps/jheaps/0.11/jheaps-0.11.jar = 1559227274000
-/home/bes/.m2/repository/org/knowm/xchart/xchart/3.8.3/xchart-3.8.3.jar = 1671992049000
-/home/bes/.m2/repository/de/erichseifert/vectorgraphics2d/VectorGraphics2D/0.13/VectorGraphics2D-0.13.jar = 1502217361000
-/home/bes/.m2/repository/de/rototor/pdfbox/graphics2d/0.41/graphics2d-0.41.jar = 1662904440000
-/home/bes/.m2/repository/org/apache/pdfbox/pdfbox/2.0.26/pdfbox-2.0.26.jar = 1650279956000
-/home/bes/.m2/repository/org/apache/pdfbox/fontbox/2.0.26/fontbox-2.0.26.jar = 1650279865000
-/home/bes/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar = 1404583945000
-/home/bes/.m2/repository/com/madgag/animated-gif-lib/1.4/animated-gif-lib-1.4.jar = 1499375540000
-/home/bes/.m2/repository/org/ehcache/sizeof/0.4.3/sizeof-0.4.3.jar = 1657819927000
-/home/bes/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar = 1644327230000
-/home/bes/.m2/repository/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar = 1338779072000
-/home/bes/Documents/sem6/minesweeper/minesweeper/src/main/java = 1719944511389
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/jquery-ui.overrides.css = 1723489088498
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/element-list = 1723489088406
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/help-doc.html = 1723489088490
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/type-search-index.zip = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/constant-values.html = 1723489088426
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/package-search-index.zip = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/overview-summary.html = 1723489088490
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/search.js = 1723489088490
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/allpackages-index.html = 1723489088478
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/overview-tree.html = 1723489088462
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/allclasses-index.html = 1723489088478
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/member-search-index.zip = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/allclasses.html = 1723489088486
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/deprecated-list.html = 1723489088482
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/type-search-index.js = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/package-search-index.js = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/serialized-form.html = 1723489088430
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/script.js = 1723489088490
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/index.html = 1723489088486
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/index-all.html = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/member-search-index.js = 1723489088474
-/home/bes/Documents/sem6/minesweeper/minesweeper/target/site/apidocs/stylesheet.css = 1723489088490
+com.minesweeper.model
+com.minesweeper.Player
+com.minesweeper.view
+C:\Users\karee\.m2\repository\org\choco-solver\choco-solver\4.10.14\choco-solver-4.10.14.jar = 1723986691869
+C:\Users\karee\.m2\repository\dk\brics\automaton\automaton\1.11-8\automaton-1.11-8.jar = 1723986691271
+C:\Users\karee\.m2\repository\org\jgrapht\jgrapht-core\1.4.0\jgrapht-core-1.4.0.jar = 1723986691533
+C:\Users\karee\.m2\repository\org\jheaps\jheaps\0.11\jheaps-0.11.jar = 1723986691194
+C:\Users\karee\.m2\repository\org\knowm\xchart\xchart\3.8.3\xchart-3.8.3.jar = 1723986691548
+C:\Users\karee\.m2\repository\de\erichseifert\vectorgraphics2d\VectorGraphics2D\0.13\VectorGraphics2D-0.13.jar = 1723986691273
+C:\Users\karee\.m2\repository\de\rototor\pdfbox\graphics2d\0.41\graphics2d-0.41.jar = 1723986691348
+C:\Users\karee\.m2\repository\org\apache\pdfbox\pdfbox\2.0.26\pdfbox-2.0.26.jar = 1723986691729
+C:\Users\karee\.m2\repository\org\apache\pdfbox\fontbox\2.0.26\fontbox-2.0.26.jar = 1723986691509
+C:\Users\karee\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar = 1723986691244
+C:\Users\karee\.m2\repository\com\madgag\animated-gif-lib\1.4\animated-gif-lib-1.4.jar = 1723986691216
+C:\Users\karee\.m2\repository\org\ehcache\sizeof\0.4.3\sizeof-0.4.3.jar = 1723986691242
+C:\Users\karee\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar = 1723986691284
+C:\Users\karee\.m2\repository\net\sf\trove4j\trove4j\3.0.3\trove4j-3.0.3.jar = 1723986691768
+C:\Users\karee\Documents\GitHub\minesweeper\src\main\java = 1723986663982
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\allclasses-index.html = 1725140058674
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\allpackages-index.html = 1725140058675
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\copy.svg = 1725140058703
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\element-list = 1725140058560
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\help-doc.html = 1725140058698
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\index-all.html = 1725140058690
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\index.html = 1725140058659
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\link.svg = 1725140058705
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\member-search-index.js = 1725140058679
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\module-search-index.js = 1725140058676
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\overview-summary.html = 1725140058693
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\overview-tree.html = 1725140058656
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\package-search-index.js = 1725140058677
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\script.js = 1725140058702
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\search-page.js = 1725140058708
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\search.html = 1725140058692
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\search.js = 1725140058707
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\serialized-form.html = 1725140058609
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\stylesheet.css = 1725140058700
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\tag-search-index.js = 1725140058680
+C:\Users\karee\Documents\GitHub\minesweeper\target\reports\apidocs\type-search-index.js = 1725140058678

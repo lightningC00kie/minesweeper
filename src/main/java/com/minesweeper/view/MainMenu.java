@@ -6,21 +6,32 @@ import java.awt.*;
 import com.minesweeper.controller.GameController;
 import com.minesweeper.model.GameMode;
 
+/**
+ * The MainMenu class represents the main menu of the Minesweeper game.
+ * It allows the user to select the difficulty level and start a new game.
+ */
 public class MainMenu extends JFrame {
 
     private GameController gameController;
 
+     /**
+     * Constructs a new MainMenu.
+     * Initializes the user interface components.
+     */
     public MainMenu() {
         initUI();
     }
 
+    /**
+     * Initializes the user interface components of the main menu.
+     * Sets up the frame properties and adds buttons for selecting the game mode.
+     */
     private void initUI() {
         setTitle("Minesweeper Main Menu");
         setSize(300, 200);
-        setLocationRelativeTo(null); // Center the window
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        // JButton newGameButton = new JButton("New Game");
         JButton easyModeButton = createCustomButton("Beginner");
         JButton mediumModeButton = createCustomButton("Intermediate");
         JButton hardModeButton = createCustomButton("Expert");
@@ -53,25 +64,29 @@ public class MainMenu extends JFrame {
         add(hardModeButton, gbc);
     }
 
+     /**
+     * Creates a custom JButton with the specified text.
+     * Sets the font, background color, foreground color, and border of the button.
+     *
+     * @param text the text to be displayed on the button
+     * @return the customized JButton
+     */
     private JButton createCustomButton(String text) {
         JButton button = new JButton(text);
 
-        // Set custom font and size
         button.setFont(new Font("", Font.BOLD, 16));
 
-        // Set button colors
-        button.setBackground(new Color(70, 130, 180)); // Steel Blue
+        button.setBackground(new Color(70, 130, 180));
         button.setForeground(Color.WHITE);
 
         button.setBorder(BorderFactory.createLineBorder(new Color(0, 6, 97), 4));
 
-        // Set custom opacity
         button.setContentAreaFilled(true);
         button.setOpaque(true);
 
         button.setBorder(BorderFactory.createCompoundBorder(
-                button.getBorder(), // Keep the existing border
-                BorderFactory.createEmptyBorder(10, 10, 10, 10) // Add extra space around the button
+                button.getBorder(), 
+                BorderFactory.createEmptyBorder(10, 10, 10, 10)
         ));
         return button;
     }
