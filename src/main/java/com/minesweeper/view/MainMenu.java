@@ -21,9 +21,9 @@ public class MainMenu extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // JButton newGameButton = new JButton("New Game");
-        JButton easyModeButton = new JButton("New Easy Game");
-        JButton mediumModeButton = new JButton("New Medium Game");
-        JButton hardModeButton = new JButton("New Hard Game");
+        JButton easyModeButton = createCustomButton("Beginner");
+        JButton mediumModeButton = createCustomButton("Intermediate");
+        JButton hardModeButton = createCustomButton("Expert");
         
 
         easyModeButton.addActionListener(e -> {
@@ -51,5 +51,28 @@ public class MainMenu extends JFrame {
         add(easyModeButton, gbc);
         add(mediumModeButton, gbc);
         add(hardModeButton, gbc);
+    }
+
+    private JButton createCustomButton(String text) {
+        JButton button = new JButton(text);
+
+        // Set custom font and size
+        button.setFont(new Font("", Font.BOLD, 16));
+
+        // Set button colors
+        button.setBackground(new Color(70, 130, 180)); // Steel Blue
+        button.setForeground(Color.WHITE);
+
+        button.setBorder(BorderFactory.createLineBorder(new Color(0, 6, 97), 4));
+
+        // Set custom opacity
+        button.setContentAreaFilled(true);
+        button.setOpaque(true);
+
+        button.setBorder(BorderFactory.createCompoundBorder(
+                button.getBorder(), // Keep the existing border
+                BorderFactory.createEmptyBorder(10, 10, 10, 10) // Add extra space around the button
+        ));
+        return button;
     }
 }

@@ -8,6 +8,8 @@ import com.minesweeper.model.Game;
 import com.minesweeper.model.GameMode;
 import com.minesweeper.view.CellButton;
 import com.minesweeper.view.GameFrame;
+import com.minesweeper.view.GameOverFrame;
+import com.minesweeper.view.MainMenu;
 
 public class GameController {
     private GameMode gameMode;
@@ -68,8 +70,10 @@ public class GameController {
         game.revealCell(cell);
         if (game.GameOver()) {
             // Game over
-            System.out.println("Game over!");
-            this.gameFrame.dispose();
+
+            revealAllCells();
+            GameOverFrame gameOverFrame = new GameOverFrame();
+            gameOverFrame.setVisible(true);
         }
         else {
             List<Cell> newlyRevealedCells = game.getNewlyRevealedCells();
@@ -80,11 +84,12 @@ public class GameController {
                     }
                 }   
         }
+    }
 
-        // if (game.isWon()) {
-        //     System.out.println("Game won!");
-        //     this.gameFrame.dispose();
-        // }
+    public void showMainMenuFrame() {
+        gameFrame.dispose();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
     }
 
     public void flagCell(CellButton cellButton) {

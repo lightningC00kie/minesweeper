@@ -54,10 +54,16 @@ public class GameFrame extends JFrame {
         revealAllButton.addActionListener(e -> {
             gameController.revealAllCells();
         });
+
+        JButton mainMenuButton = new JButton("Main Menu");
+        mainMenuButton.addActionListener(e -> {
+            gameController.showMainMenuFrame();
+        });
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(newGameButton);
         buttonPanel.add(solveButton);
         buttonPanel.add(revealAllButton);
+        buttonPanel.add(mainMenuButton);
         topPanel.add(buttonPanel, BorderLayout.CENTER);
 
 
