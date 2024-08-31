@@ -1,0 +1,5 @@
+com.minesweeper
+com.minesweeper.controller
+com.minesweeper.model
+com.minesweeper.Player
+com.minesweeper.view

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.minesweeper"},{"l":"com.minesweeper.controller"},{"l":"com.minesweeper.model"},{"l":"com.minesweeper.Player"},{"l":"com.minesweeper.view"}]
