@@ -6,7 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-
+/**
+ * The Game class represents the Minesweeper game logic.
+ * It manages the game grid, handles user interactions, and tracks the game state.
+ */
 public class Game {
     private int rows;
     private int columns;
@@ -14,6 +17,19 @@ public class Game {
     private boolean gameOver = false;
     private int numMines;
     private List<Cell> newlyRevealedCells = new ArrayList<>();
+
+    /**
+     * Constructs a new Game with the specified game mode.
+     * Initializes the game grid and places mines based on the difficulty level.
+     *
+     * @param mode The game mode which determines the difficulty level.
+     *             It can be one of the following:
+     *             <ul>
+     *                 <li>EASY: 9x9 grid with 10 mines</li>
+     *                 <li>MEDIUM: 16x16 grid with 40 mines</li>
+     *                 <li>HARD: 16x30 grid with 99 mines</li>
+     *             </ul>
+     */
     public Game(GameMode mode) {
         switch (mode) {
             case EASY:
@@ -41,10 +57,21 @@ public class Game {
         setCounts();
     }
 
+    /**
+     * Returns the number of mines in the game.
+     *
+     * @return the number of mines.
+     */
     public int getNumMines() {
         return numMines;
     }
 
+    /**
+     * Initializes the game grid with the specified number of rows and columns.
+     *
+     * @param rows    The number of rows in the game grid.
+     * @param columns The number of columns in the game grid.
+     */
     public void initGame(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -58,6 +85,11 @@ public class Game {
         }
     }
 
+    /**
+     * Places the specified number of mines randomly on the game grid.
+     *
+     * @param numMines The number of mines to be placed.
+     */
     public void placeMines(int numMines) {
         int minesPlaced = 0;
         while (minesPlaced < numMines) {
@@ -70,6 +102,9 @@ public class Game {
         }
     }
 
+    /**
+     * Sets the count of adjacent mines for each non-mine cell in the game grid.
+     */
     public void setCounts() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -88,6 +123,12 @@ public class Game {
         }
     }
     
+    /**
+     * Reveals the specified cell. If the cell contains a mine, the game is marked as over.
+     * Otherwise, it reveals all adjacent cells.
+     *
+     * @param cell The cell to be revealed.
+     */
     public void revealCell(Cell cell) {
         if (cell.isMine()) {
             gameOver = true;
@@ -96,6 +137,12 @@ public class Game {
         revealAll(cell);
     }
 
+    /**
+     * Reveals all cells adjacent to the specified cell. If the cell has a neighbor with no adjacent mines,
+     * it recursively reveals all of its neighbors.
+     *
+     * @param cell The cell to be revealed.
+     */
     public void revealAll(Cell cell) {
         newlyRevealedCells = new ArrayList<>();
         Queue<Cell> queue = new LinkedList<>();
@@ -118,6 +165,12 @@ public class Game {
         }
     }
 
+    /**
+     * Gets the neighbors of the specified cell.
+     *
+     * @param cell The cell to get neighbors for.
+     * @return A list of neighboring cells.
+     */
     public List<Cell> getNeighbors(Cell cell) {
         List<Cell> neighbors = new ArrayList<>();
         int[] directions = {-1, 0, 1}; 
@@ -137,38 +190,81 @@ public class Game {
                 }
             }
         }
-        System.out.println("neighbors: " + neighbors.size());
         return neighbors;
     }
 
+    /**
+     * Returns the number of adjacent mines for the cell at the specified row and column.
+     *
+     * @param row The row index of the cell.
+     * @param col The column index of the cell.
+     * @return the number of adjacent mines.
+     */
     public int getAdjacentMines(int row, int col) {
         return grid[row][col].getCount();
     }
 
+    /**
+     * Returns the number of rows in the game grid.
+     *
+     * @return the number of rows.
+     */
     public int getRows() {
         return rows;
     }
 
+    /**
+     * Returns the number of columns in the game grid.
+     *
+     * @return the number of columns.
+     */
     public int getColumns() {
         return columns;
     }
 
+     /**
+     * Checks if the game is over.
+     *
+     * @return true if the game is over, false otherwise.
+     */
     public boolean GameOver() {
         return gameOver;
     }
 
+    /**
+     * Gets the cell at the specified row and column.
+     *
+     * @param row The row index of the cell.
+     * @param col The column index of the cell.
+     * @return the cell at the specified row and column.
+     */
     public Cell getCell(int row, int col) {
         return grid[row][col];
     }
 
+    /**
+     * Gets the game grid.
+     *
+     * @return The game grid.
+     */
     public Cell[][] getGrid() {
         return grid;
     }
 
+    /**
+     * Gets the list of newly revealed cells.
+     *
+     * @return The list of newly revealed cells.
+     */
     public List<Cell> getNewlyRevealedCells() {
         return newlyRevealedCells;
     }
 
+    /**
+     * Checks if the game is won. Game is won if all non-mine cells are revealed.
+     *
+     * @return true if the game is won, false otherwise.
+     */
     public boolean isWon() {
         int numRevealed = 0;
         for (int i = 0; i < rows; i++) {
